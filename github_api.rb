@@ -52,11 +52,14 @@ def get_repo_stats(client, owner, repo)
     puts "Fetching repository stats for #{full_repo_name}..."
     stats = client.languages(full_repo_name)
 
-    # Print the languages and lines of code
-    stats.each do |language, lines|
+    # Convert the Sawyer::Resource object to a hash for caching
+    stats_hash = stats.to_h
+    stats_hash.each do |language, lines|
       puts "#{language}: #{lines} lines of code"
     end
+    return stats_hash
   rescue Octokit::Error => e
     puts "Error fetching repository stats: #{e.message}"
+    return {}
   end
 end

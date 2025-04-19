@@ -1,23 +1,6 @@
 require_relative 'colors'
 require_relative 'github_api'
-
-def debug_colors
-  # Path to the lang_colors.json file
-  colors_file = File.expand_path('lang_colors.json', __dir__)
-
-  # Check if the lang_colors.json file exists
-  unless File.exist?(colors_file)
-    puts "Error: The lang_colors.json file is missing. Please ensure it exists in the same directory."
-    return
-  end
-
-  # Read and print each language with its color
-  puts "Testing colors from lang_colors.json file:"
-  colors = JSON.parse(File.read(colors_file))
-  colors.each do |lang, color|
-    puts "#{color_lang(lang)}: #{color}" # Print the language name in its color
-  end
-end
+require_relative 'debug' # Require the new debug file
 
 def main
   # Check for the -c flag
