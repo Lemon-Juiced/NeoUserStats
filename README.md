@@ -12,3 +12,6 @@ To run a debug test run:
 ## Requirements
 - faraday: `gem install faraday-retry`  
 - octokit: `gem install octokit`  
+
+## To Do:  
+Convert this to JavaScript, so this can be used natively in a website.
